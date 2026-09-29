@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏮%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Specificity calculator</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../assets/kit.css">
+  <script src="../assets/kit.js" defer></script>
+  <style>.spec-calc{font-size:1.4rem;max-width:52rem}</style>
+</head>
+<body class="page">
+  <div class="page-wrap">
+    <div class="page-top"><a href="../index.html">← CSS Fundamentals · all materials</a><span>Playground</span></div>
+    <span class="eyebrow-tag">Cascade</span>
+    <h1>Specificity <em>calculator</em></h1>
+    <p class="intro">Type a selector to see its score: ids, classes, types. Compare two selectors to see which one wins. Hover a coloured part for details.</p>
+    <h2>One selector</h2>
+    <div class="spec-calc" data-value="nav ul li.active > a:hover"></div>
+    <h2>Who wins?</h2>
+    <div class="spec-calc" data-compare data-value="#tickets .button||.page .form .row .button"></div>
+    <h2>Cheat sheet</h2>
+    <div class="tip"><p><b style="color:var(--spec-a)">ID</b> column: <code>#id</code><br><b style="color:var(--spec-b)">CLASS</b> column: <code>.class</code> <code>[attr]</code> <code>:hover</code> and other pseudo-classes<br><b style="color:var(--spec-c)">TYPE</b> column: <code>div</code> <code>h1</code> <code>::before</code> and other pseudo-elements<br><b>Zero</b>: <code>*</code>, combinators (<code>&gt; + ~</code> and space), <code>:where()</code><br><b>Borrowed</b>: <code>:is()</code> <code>:not()</code> <code>:has()</code> count as their most specific argument.</p></div>
+  </div>
+</body>
+</html>

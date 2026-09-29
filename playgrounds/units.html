@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏮%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Units lab</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../assets/kit.css">
+  <script src="../assets/kit.js" defer></script>
+  <style>.panel{height:36rem}.units-lab{font-size:1.2rem}</style>
+</head>
+<body class="page">
+  <div class="page-wrap">
+    <div class="page-top"><a href="../index.html">← CSS Fundamentals · all materials</a><span>Playground</span></div>
+    <span class="eyebrow-tag">Units</span>
+    <h1>Relative to <em>what?</em></h1>
+    <p class="intro">Every relative unit is a question: relative to what? Change the browser font size, the parent font size and the viewport width, and watch which bars react.</p>
+    <div class="units-lab panel"></div>
+    <h2>Rules of thumb</h2>
+    <div class="tip"><ul><li><code>rem</code> for font sizes — respects the reader's browser setting.</li><li><code>em</code> for padding that should grow with its text (buttons, tags).</li><li><code>px</code> for borders and hairlines.</li><li><code>%</code> / <code>vw</code> for widths that follow the container or screen.</li><li><code>ch</code> for readable line length: <code>max-width: 65ch</code>.</li></ul></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏮%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercise 5 · Dress the market</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../assets/kit.css">
+  <script src="../assets/kit.js" defer></script>
+  <style>
+    .brief { font-size: 1.35rem; max-width: 60rem; margin: 1rem 0 2.5rem; }
+    .checks { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 0.6rem; max-width: 62rem; }
+    .checks label { display: flex; gap: 0.7rem; align-items: flex-start; padding: 0.8rem 1rem; background: var(--white); border: 2px solid var(--ink); border-radius: 0.6rem; cursor: pointer; }
+    .checks input { width: 1.3rem; height: 1.3rem; accent-color: var(--green); flex: none; margin-top: 0.15rem; }
+    .checks label:has(input:checked) { background: #d8f5e6; }
+    .inspo { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 1rem; max-width: 62rem; padding: 0; list-style: none; }
+    .inspo a { display: block; color: var(--ink); text-decoration: none; font: 700 0.9rem var(--font-mono); }
+    .inspo img { display: block; width: 100%; border: 2px solid var(--ink); border-radius: 0.5rem; margin-bottom: 0.4rem; box-shadow: 4px 4px 0 var(--ink); }
+    .inspo a:hover img, .inspo a:focus-visible img { transform: translateY(-3px); }
+  </style>
+</head>
+<body class="page">
+  <div class="page-wrap">
+    <div class="page-top"><a href="../index.html">← CSS Fundamentals · all materials</a><span>Exercise 5b · 15 min · then homework</span></div>
+    <span class="eyebrow-tag">Finale</span>
+    <h1>Dress <em>the market</em></h1>
+    <p class="intro">Same HTML as everyone else. Your outfit. Draw a brief, obey it, and tick off the checklist as you go. Work in <code>project/starter/css/style.css</code>.</p>
+
+    <h2>1 · Draw your brief</h2>
+    <div class="brief"></div>
+
+    <h2>2 · The checklist</h2>
+    <p class="intro" style="font-size:1.05rem">Foundation from Exercise 5a first: <code>box-sizing</code> reset, <code>font: inherit</code>, <code>:root</code> variables, body font &amp; colour, rem sizes, <code>max-width</code> in ch.</p>
+    <h3 style="margin:1.2rem 0 .5rem">In class · 15 min</h3>
+    <ul class="checks">
+      <li><label><input type="checkbox"> Your brief's mood is visible</label></li>
+      <li><label><input type="checkbox"> Vendor cards look like cards</label></li>
+      <li><label><input type="checkbox"> Links &amp; buttons have <code>:hover</code> <em>and</em> <code>:focus-visible</code></label></li>
+      <li><label><input type="checkbox"> A visible <code>::before</code> or <code>::after</code></label></li>
+      <li><label><input type="checkbox"> <code>.sold-out</code> cards look sold out</label></li>
+    </ul>
+    <h3 style="margin:1.2rem 0 .5rem">Homework</h3>
+    <ul class="checks">
+      <li><label><input type="checkbox"> Your brief's constraint — obeyed</label></li>
+      <li><label><input type="checkbox"> All text passes 4.5 : 1 contrast (DevTools' colour picker shows it)</label></li>
+      <li><label><input type="checkbox"> No id selectors, no <code>!important</code></label></li>
+      <li><label><input type="checkbox"> Each custom property used at least twice</label></li>
+      <li><label><input type="checkbox"> Published on GitHub Pages, link sent</label></li>
+    </ul>
+    <p class="intro" style="font-size:1.05rem;margin-top:1rem">Want a card grid? Uncomment the <strong>layout magic</strong> line at the bottom of <code>css/style.css</code>. Next week you'll know why it works.</p>
+
+    <h2>3 · A plan that works</h2>
+    <ol class="tasks">
+      <li><strong>Variables &amp; fonts.</strong> Write <code>:root</code> with your palette. Add a Google Fonts <code>&lt;link&gt;</code> in the <code>&lt;head&gt;</code>, before your stylesheet — e.g. <code>&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&amp;display=swap"&gt;</code>. Set <code>font-family</code> and <code>color</code> on <code>body</code> — inheritance does the rest.</li>
+      <li><strong>Type.</strong> Sizes for <code>h1</code>, <code>h2</code>, <code>h3</code>, <code>.lead</code>, <code>.eyebrow</code>. Line-heights. Letter-spacing on small caps labels.</li>
+      <li><strong>Boxes.</strong> Padding and borders on <code>.vendor-card</code>, the table, the form. <code>max-width</code> + <code>margin: 0 auto</code> on <code>main</code> (shorthand: top/bottom 0, left/right auto = centred).</li>
+      <li><strong>States.</strong> <code>:hover</code>, <code>:focus-visible</code>, <code>details[open]</code>, <code>input:user-invalid</code>.</li>
+      <li><strong>Details.</strong> Pseudo-elements, <code>:nth-child</code> rhythms, <code>:has()</code> tricks.</li>
+    </ol>
+
+    <h2>4 · Steal like an artist</h2>
+    <p class="intro" style="font-size:1.05rem">Open a theme, press <code>⌘ ⌥ U</code> (view source), click the stylesheet. Copy a technique, not a whole file.</p>
+    <ul class="inspo">
+      <li><a href="../project/showcase/index.html?theme=swiss"><img src="../images/outfit-swiss.png" alt="Swiss theme">swiss.css</a></li>
+      <li><a href="../project/showcase/index.html?theme=brutal"><img src="../images/outfit-brutal.png" alt="Brutal theme">brutal.css</a></li>
+      <li><a href="../project/showcase/index.html?theme=neon"><img src="../images/outfit-neon.png" alt="Neon theme">neon.css</a></li>
+      <li><a href="../project/showcase/index.html?theme=zine"><img src="../images/outfit-zine.png" alt="Zine theme">zine.css</a></li>
+    </ul>
+
+    <h2>5 · Hand it in</h2>
+    <div class="tip">
+      <p>Push the <code>starter/</code> folder to a GitHub repository, turn on <strong>Settings → Pages</strong>, and send the link. Check it online: if it's unstyled there, re-read the path and capital-letter crimes from Exercise 1.</p>
+    </div>
+  </div>
+</body>
+</html>

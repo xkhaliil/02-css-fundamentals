@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏮%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercise 1b · The broken links</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../../assets/kit.css">
+  <style>
+    .suspects { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; padding: 0; list-style: none; }
+    .suspects a { display: block; padding: 1.1rem 1.2rem; border: 2px solid var(--ink); border-radius: 0.8rem; background: var(--white); color: var(--ink); text-decoration: none; box-shadow: 4px 4px 0 var(--ink); }
+    .suspects a:hover, .suspects a:focus-visible { background: var(--yellow); outline: none; }
+    .suspects b { display: block; font-size: 1.6rem; }
+    .suspects small { font-family: var(--font-mono); color: var(--muted); }
+    details { margin: 0.6rem 0; background: var(--white); border: 2px solid var(--ink); border-radius: 0.6rem; padding: 0.7rem 1rem; max-width: 70ch; }
+    summary { cursor: pointer; font-weight: 700; }
+  </style>
+</head>
+<body class="page">
+  <div class="page-wrap">
+    <div class="page-top"><a href="../../index.html">← CSS Fundamentals · all materials</a><span>Exercise 1b · for early finishers · solved together in class</span></div>
+    <span class="eyebrow-tag">Debug</span>
+    <h1>Five pages, <em>five crimes</em></h1>
+    <p class="intro">Every page below tries to load the same stylesheet, <code>css/style.css</code>. That file is fine. On each page exactly <strong>one</strong> thing is wrong with how it's connected. Find it.</p>
+
+    <ul class="suspects">
+      <li><a href="a.html"><b>Page A</b><small>a.html</small></a></li>
+      <li><a href="b.html"><b>Page B</b><small>b.html</small></a></li>
+      <li><a href="c.html"><b>Page C</b><small>c.html</small></a></li>
+      <li><a href="d.html"><b>Page D</b><small>d.html · sneaky</small></a></li>
+      <li><a href="e.html"><b>Page E</b><small>e.html · bonus</small></a></li>
+    </ul>
+
+    <div class="tip">
+      <strong>Your tools</strong>
+      <ol class="tasks">
+        <li><strong>View source</strong> (<code>⌘ ⌥ U</code> / <code>Ctrl U</code>) — read the <code>&lt;head&gt;</code>. Click the <code>href</code>: does it open the file?</li>
+        <li><strong>DevTools → Network</strong>, reload. Is <code>style.css</code> there? Red <code>404</code> = wrong path.</li>
+        <li><strong>DevTools → Elements → Styles</strong>. Pick <code>&lt;body&gt;</code>. Do you see rules from <code>style.css</code>?</li>
+      </ol>
+    </div>
+
+    <h2>Answers <em>(no peeking)</em></h2>
+    <details><summary>Page A</summary><p><code>&lt;link href="css/style.css"&gt;</code> has no <code>rel="stylesheet"</code>. A <code>&lt;link&gt;</code> can point at icons, fonts, feeds… without <code>rel</code> the browser doesn't know it's a stylesheet, so it never downloads it.</p></details>
+    <details><summary>Page B</summary><p><code>href="style.css"</code> looks for the file <em>next to</em> the HTML. It lives in <code>css/</code>. Network tab shows a 404. Paths are relative to the HTML file.</p></details>
+    <details><summary>Page C</summary><p><code>&lt;style src="…"&gt;</code> is not a thing. <code>&lt;style&gt;</code> holds CSS written inside it; to load a file you need <code>&lt;link rel="stylesheet" href="…"&gt;</code>. (<code>src</code> is for <code>&lt;script&gt;</code> and <code>&lt;img&gt;</code>.)</p></details>
+    <details><summary>Page D</summary><p>The file loads (Network: 200 ✓) and the stamp says "connected" — but the page isn't yellow. Open <code>css/pasted.css</code>: someone copied <code>&lt;style&gt;</code> tags into a .css file. The browser reads <code>&lt;style&gt; body</code> as one broken selector and silently drops the <em>whole first rule</em>. Everything after it still works. CSS fails quietly, one rule at a time.</p></details>
+    <details><summary>Page E (bonus)</summary><p>It works on your Mac… The file is <code>style.css</code>, the link says <code>Style.css</code>. macOS and Windows don't care about capital letters in file names; the Linux servers behind most hosting (GitHub Pages included) do. Deploy it and it breaks. Keep file names lowercase.</p></details>
+  </div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+/* Neon Night — glowing gradients on a deep night sky */
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap");
+
+:root {
+  --night: #0a0918;
+  --text: #f3eeff;
+  --dim: #aaa2cc;
+  --pink: #ff3ea5;
+  --orange: #ff9f1c;
+  --cyan: #2de2e6;
+  --lime: #c6ff3d;
+  --glass: rgb(255 255 255 / 0.06);
+  --edge: rgb(255 255 255 / 0.14);
+  --display: "Unbounded", system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(60rem 40rem at 85% -10%, rgb(255 62 165 / 0.35), transparent 60%),
+    radial-gradient(50rem 40rem at -10% 30%, rgb(45 226 230 / 0.18), transparent 60%),
+    radial-gradient(40rem 30rem at 50% 110%, rgb(255 159 28 / 0.2), transparent 60%),
+    var(--night);
+  background-attachment: fixed;
+  color: var(--text);
+  font: 400 1.0625rem/1.6 "DM Sans", system-ui, sans-serif;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem clamp(1rem, 5vw, 4rem);
+  background: rgb(10 9 24 / 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--edge);
+}
+.logo { font: 900 1.1rem var(--display); color: var(--text); text-decoration: none; }
+.main-nav ul { display: flex; gap: 0.4rem; list-style: none; margin: 0; padding: 0; }
+.main-nav a {
+  color: var(--dim);
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 99px;
+  font-weight: 600;
+  transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  color: var(--night);
+  background: var(--cyan);
+  outline: none;
+  box-shadow: 0 0 24px rgb(45 226 230 / 0.6);
+}
+
+main { max-width: 72rem; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 4rem); }
+
+.hero { padding: clamp(4rem, 12vh, 8rem) 0 5rem; text-align: center; }
+.eyebrow {
+  display: inline-block;
+  margin: 0;
+  font: 700 0.8rem var(--display);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid rgb(45 226 230 / 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  box-shadow: inset 0 0 20px rgb(45 226 230 / 0.25);
+}
+.hero h1 {
+  font: 900 clamp(3rem, 9vw, 7.5rem)/0.92 var(--display);
+  letter-spacing: -0.04em;
+  margin: 2rem 0 1.5rem;
+  background: linear-gradient(100deg, var(--pink), var(--orange) 55%, var(--lime));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 30px rgb(255 62 165 / 0.45));
+}
+.lead { max-width: 44ch; margin: 0 auto 2.5rem; font-size: 1.3rem; color: var(--dim); }
+
+.button,
+button {
+  display: inline-block;
+  font: 700 1rem var(--display);
+  color: var(--night);
+  background: linear-gradient(100deg, var(--pink), var(--orange));
+  padding: 1.1rem 2rem;
+  border-radius: 99px;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 10px 40px rgb(255 62 165 / 0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.button:hover, button:hover,
+.button:focus-visible, button:focus-visible {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 16px 60px rgb(255 159 28 / 0.6);
+  outline: none;
+}
+
+section { padding: 4rem 0; }
+h2 { font: 900 clamp(2rem, 4vw, 3rem) var(--display); letter-spacing: -0.03em; margin: 0 0 2rem; }
+h2::before { content: "✦ "; color: var(--pink); text-shadow: 0 0 16px var(--pink); }
+
+.vendor-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.25rem;
+}
+.vendor-card {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  background: var(--glass);
+  border: 1px solid var(--edge);
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.vendor-card:hover {
+  transform: translateY(-6px);
+  border-color: rgb(255 62 165 / 0.6);
+  box-shadow: 0 20px 50px -20px rgb(255 62 165 / 0.6);
+}
+.vendor-card h3 { font: 700 1.3rem var(--display); margin: 0.9rem 0 0.5rem; }
+.vendor-card p { margin: 0; color: var(--dim); }
+.tag {
+  font: 700 0.7rem var(--display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  border-radius: 99px;
+  background: rgb(198 255 61 / 0.12);
+  color: var(--lime);
+  border: 1px solid rgb(198 255 61 / 0.35);
+}
+.featured {
+  background: linear-gradient(160deg, rgb(255 62 165 / 0.25), rgb(255 159 28 / 0.08));
+  border-color: rgb(255 62 165 / 0.6);
+}
+.featured::after {
+  content: "★ Staff pick";
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+  font: 700 0.7rem var(--display);
+  color: var(--orange);
+}
+.sold-out { opacity: 0.45; filter: grayscale(1); }
+.badge {
+  display: inline-block;
+  margin-top: 1rem;
+  font: 700 0.75rem var(--display);
+  color: var(--pink);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.schedule { width: 100%; border-collapse: collapse; font-size: 1.05rem; }
+.schedule th {
+  text-align: left;
+  font: 700 0.75rem var(--display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  padding: 0 1rem 0.8rem;
+}
+.schedule td { padding: 1rem; border-top: 1px solid var(--edge); }
+.schedule td:first-child { font: 700 1.1rem var(--display); color: var(--orange); width: 7rem; }
+.schedule tbody tr:hover td { background: rgb(255 255 255 / 0.05); }
+
+details {
+  background: var(--glass);
+  border: 1px solid var(--edge);
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+summary { cursor: pointer; font-weight: 600; font-size: 1.1rem; }
+details[open] summary { color: var(--cyan); }
+details p { color: var(--dim); margin: 0.75rem 0 0; }
+
+.ticket-form {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 32rem;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: var(--glass);
+  border: 1px solid var(--edge);
+}
+label { font-weight: 600; font-size: 0.9rem; color: var(--dim); margin-top: 0.5rem; }
+input, select {
+  font: inherit;
+  color: var(--text);
+  background: rgb(0 0 0 / 0.35);
+  border: 1px solid var(--edge);
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+}
+input:focus-visible, select:focus-visible {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 4px rgb(45 226 230 / 0.25);
+}
+.check { display: flex; gap: 0.6rem; align-items: center; color: var(--text); }
+.check input { accent-color: var(--pink); width: 1.2rem; height: 1.2rem; }
+.ticket-form button { margin-top: 1rem; justify-self: start; }
+
+.site-footer { text-align: center; padding: 3rem 1rem; color: var(--dim); border-top: 1px solid var(--edge); font-size: 0.9rem; }
+.site-footer a { color: var(--cyan); }

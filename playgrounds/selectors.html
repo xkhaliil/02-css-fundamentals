@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏮%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Selector tester</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../assets/kit.css">
+  <script src="../assets/kit.js" defer></script>
+  <style>.panel{height:36rem}</style>
+</head>
+<body class="page">
+  <div class="page-wrap">
+    <div class="page-top"><a href="../index.html">← CSS Fundamentals · all materials</a><span>Playground</span></div>
+    <span class="eyebrow-tag">Selectors</span>
+    <h1>A selector is a <em>question</em></h1>
+    <p class="intro">Type any selector. The browser answers by pointing at the elements that match — in the code and in the page.</p>
+    <div class="sel-tester panel" data-presets="h3|.tag|#tickets|li.featured|li .featured|.vendor-list > li|.vendor-card:first-child|.vendor-card:has(.badge)|h2 + ul|[type=&quot;email&quot;]|a:hover|*">
+      <script type="text/plain">
+<header class="site-header">
+  <a class="logo" href="#">Night Market</a>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#vendors">Vendors</a></li>
+      <li><a href="#tickets">Tickets</a></li>
+    </ul>
+  </nav>
+</header>
+<section id="vendors">
+  <h2>Vendors</h2>
+  <ul class="vendor-list">
+    <li class="vendor-card featured">
+      <span class="tag">Food</span>
+      <h3>Dumpling Dynasty</h3>
+    </li>
+    <li class="vendor-card">
+      <span class="tag">Music</span>
+      <h3>Side B Records</h3>
+    </li>
+    <li class="vendor-card sold-out">
+      <span class="tag">Food</span>
+      <h3>Churros Till Late</h3>
+      <strong class="badge">Sold out</strong>
+    </li>
+    <li class="vendor-card">
+      <span class="tag">Crafts</span>
+      <h3>The Plant Swap</h3>
+    </li>
+  </ul>
+</section>
+<section id="tickets">
+  <h2>Get a ticket</h2>
+  <form class="ticket-form">
+    <label for="email">Email</label>
+    <input id="email" type="email" required>
+    <button type="submit">Reserve</button>
+  </form>
+</section>
+      </script>
+    </div>
+  </div>
+</body>
+</html>

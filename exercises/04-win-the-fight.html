@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏮%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercise 4 · Win the fight</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../assets/kit.css">
+  <script src="../assets/kit.js" defer></script>
+  <style>
+    .round { margin: 3rem 0 0; padding-top: 2rem; border-top: 2px solid var(--ink); }
+    .round header { display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+    .round header b { font: 800 0.85rem var(--font-mono); background: var(--ink); color: var(--yellow); padding: 0.35rem 0.6rem; border-radius: 0.3rem; }
+    .round h2 { margin: 0; }
+    .round .panel { height: 22rem; margin-top: 1rem; }
+    .round p { max-width: 70ch; }
+    details { margin-top: 1rem; max-width: 70ch; background: var(--white); border: 2px solid var(--ink); border-radius: 0.6rem; padding: 0.7rem 1rem; }
+    summary { cursor: pointer; font-weight: 700; }
+  </style>
+</head>
+<body class="page">
+  <div class="page-wrap">
+    <div class="page-top"><a href="../index.html">← CSS Fundamentals · all materials</a><span>Exercise 4a + 4b · 4 + 4 min · rounds 4–6 homework</span></div>
+    <span class="eyebrow-tag">Cascade</span>
+    <h1>Win the fight. <em>Fairly.</em></h1>
+    <p class="intro">In every round, a rule you can't touch is already in the stylesheet. Add CSS <strong>after it</strong> in the editor so your colour wins. Each round has a rule of engagement. In class: rounds 1–2 right after the verdict on the stubborn button (Ex 4a), round 3 after inheritance (Ex 4b). Rounds 4–6 are homework.</p>
+
+    <section class="round">
+      <header><b>Round 1</b><h2>The tie-break</h2></header>
+      <p>Make the heading <code>tomato</code>. No ids, no <code>!important</code>.</p>
+      <div class="live panel" data-solved="✓ Same specificity → the later rule wins.">
+        <script type="text/plain" data-role="html"><section class="hero"><h1>Harbour Night Market</h1></section></script>
+        <script type="text/plain" data-role="locked">.hero h1 { color: black; }</script>
+        <textarea>/* your CSS goes after the locked rule */
+</textarea>
+        <script type="application/json" data-role="checks">[
+          { "label": "Heading is tomato", "sel": "h1", "prop": "color", "is": "tomato" },
+          { "label": "No !important", "forbid": "important" },
+          { "label": "No id selectors", "forbid": "id" }
+        ]</script>
+      </div>
+      <details><summary>Why it works</summary><p>Writing <code>.hero h1</code> again gives you (0,1,1) against (0,1,1). A tie. When specificity ties, <strong>order of appearance</strong> decides: the rule that comes last wins. <code>h1</code> alone (0,0,1) would lose, even though it comes later.</p></details>
+    </section>
+
+    <section class="round">
+      <header><b>Round 2</b><h2>Beat the id</h2></header>
+      <p>Make the paragraph <code>tomato</code>. No <code>!important</code>. Try ten classes first, just to feel it fail.</p>
+      <div class="live panel" data-solved="✓ Only an id beats an id.">
+        <script type="text/plain" data-role="html"><div id="promo" class="banner"><p class="lead">Entry is free all night.</p></div></script>
+        <script type="text/plain" data-role="locked">#promo p { color: gray; }</script>
+        <textarea>.banner .lead { color: tomato; }
+</textarea>
+        <script type="application/json" data-role="checks">[
+          { "label": "Paragraph is tomato", "sel": "p", "prop": "color", "is": "tomato" },
+          { "label": "No !important", "forbid": "important" }
+        ]</script>
+      </div>
+      <details><summary>Why it works</summary><p>Specificity is compared column by column, left to right. (1,0,1) beats (0,99,0) because the id column is checked first. You need an id too: <code>#promo p</code> again (tie → you're later), or <code>#promo .lead</code> (1,1,0). Lesson: ids in CSS start arms races. Style with classes.</p></details>
+    </section>
+
+    <section class="round">
+      <header><b>Round 3</b><h2>The inheritance trap</h2></header>
+      <p>Make <em>all</em> the text in the card <code>tomato</code>. Start with the line that's already there — why does only the heading change?</p>
+      <div class="live panel" data-solved="✓ A direct rule always beats an inherited value.">
+        <script type="text/plain" data-role="html"><article class="card"><h3>Side B Records</h3><p>Crates of vinyl, sorted by mood instead of genre.</p></article></script>
+        <script type="text/plain" data-role="locked">p { color: #555; }</script>
+        <textarea>.card { color: tomato; }
+</textarea>
+        <script type="application/json" data-role="checks">[
+          { "label": "Heading is tomato", "sel": "h3", "prop": "color", "is": "tomato" },
+          { "label": "Paragraph is tomato", "sel": "p", "prop": "color", "is": "tomato" },
+          { "label": "No !important", "forbid": "important" },
+          { "label": "No id selectors", "forbid": "id" }
+        ]</script>
+      </div>
+      <details><summary>Why it works</summary><p>Inheritance only fills the gaps. The <code>&lt;p&gt;</code> has its own rule, <code>p { color: #555 }</code>, and <em>any</em> rule that targets an element directly beats a value it would inherit from its parent — even a weak (0,0,1) rule. Target the paragraph itself: <code>.card p</code>.</p></details>
+    </section>
+
+    <section class="round">
+      <header><b>Round 4</b><h2>Zero power</h2></header>
+      <p>Make the link <code>tomato</code> using <strong>only type selectors</strong> — no classes, no ids, no pseudo-classes.</p>
+      <div class="live panel" data-solved="✓ :where() has zero specificity — anything beats it.">
+        <script type="text/plain" data-role="html"><aside class="sidebar"><a href="#">Download the map</a></aside></script>
+        <script type="text/plain" data-role="locked">:where(.sidebar) a { color: gray; }</script>
+        <textarea>/* only element names allowed here */
+</textarea>
+        <script type="application/json" data-role="checks">[
+          { "label": "Link is tomato", "sel": "a", "prop": "color", "is": "tomato" },
+          { "label": "Only type selectors", "forbid": "non-type" },
+          { "label": "No !important", "forbid": "important" }
+        ]</script>
+      </div>
+      <details><summary>Why it works</summary><p><code>:where()</code> matches like normal but adds <strong>nothing</strong> to specificity. The locked rule is only (0,0,1). Your <code>a</code> is also (0,0,1) and comes later → it wins. Libraries use <code>:where()</code> so their defaults are easy to override.</p></details>
+    </section>
+
+    <section class="round">
+      <header><b>Round 5</b><h2>The inline style</h2></header>
+      <p>Make the button's background <code>tomato</code>. You can't edit the HTML. The starting line already uses an id and three classes — and still loses. Anything goes.</p>
+      <div class="live panel" data-show-html data-solved="✓ Only !important beats a style attribute. Feel dirty? Good.">
+        <script type="text/plain" data-role="html"><section id="tickets"><button class="cta" style="background: royalblue; color: white; padding: 12px 20px; border: 0; border-radius: 8px; font: 700 18px system-ui">Reserve my spot</button></section></script>
+        <textarea>#tickets .cta.cta.cta { background: tomato; }
+</textarea>
+        <script type="application/json" data-role="checks">[
+          { "label": "Button background is tomato", "sel": "button", "prop": "background-color", "is": "tomato" }
+        ]</script>
+      </div>
+      <details><summary>Why it works</summary><p>A <code>style=""</code> attribute sits above every selector in the cascade — no amount of ids beats it. <code>!important</code> jumps a whole level up the cascade. Use it here, where you truly can't touch the source (third-party widgets, CMS output). Almost nowhere else.</p></details>
+    </section>
+
+    <section class="round">
+      <header><b>Round 6</b><h2>Layers</h2></header>
+      <p>Make the button <code>tomato</code> with the plain selector <code>.button</code>. Impossible against an id? Read the locked code carefully.</p>
+      <div class="live panel" data-solved="✓ Styles outside any layer beat every layer.">
+        <script type="text/plain" data-role="html"><section id="tickets"><a class="button" href="#">Get a free ticket</a></section></script>
+        <script type="text/plain" data-role="base">.button { display: inline-block; padding: 12px 20px; color: white; border-radius: 99px; font: 700 18px system-ui; text-decoration: none; }</script>
+        <script type="text/plain" data-role="locked">
+          @layer theme {
+            #tickets .button { background: royalblue; }
+          }
+        </script>
+        <textarea>/* one class, no !important */
+</textarea>
+        <script type="application/json" data-role="checks">[
+          { "label": "Button is tomato", "sel": ".button", "prop": "background-color", "is": "tomato" },
+          { "label": "No !important", "forbid": "important" },
+          { "label": "No id selectors", "forbid": "id" }
+        ]</script>
+      </div>
+      <details><summary>Why it works</summary><p>Cascade layers are checked <em>before</em> specificity. CSS that isn't in any layer beats CSS inside a layer, whatever the selectors. <code>.button { background: tomato }</code> is enough. Layers let you decide the winners on purpose, instead of fighting with longer selectors.</p></details>
+    </section>
+  </div>
+</body>
+</html>

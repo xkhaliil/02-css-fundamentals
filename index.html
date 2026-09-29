@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏮%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS fundamentals · Programming Interactivity 2</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="assets/kit.css">
+  <style>
+    .hero-row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 2rem; align-items: center; margin-bottom: 2rem; }
+    .hero-row h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 0.9; }
+    .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+    .strip img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: top left; border: 2px solid var(--ink); border-radius: 0.5rem; }
+    .strip img:nth-child(odd) { transform: rotate(-2deg); } .strip img:nth-child(even) { transform: rotate(2deg) translateY(0.6rem); }
+    .big-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .big-links a { font: 800 1.1rem var(--font-sans); color: var(--ink); text-decoration: none; padding: 0.85rem 1.3rem; border: 2px solid var(--ink); border-radius: 99px; background: var(--yellow); box-shadow: 4px 4px 0 var(--ink); }
+    .big-links a.alt { background: var(--white); }
+    .big-links a:hover, .big-links a:focus-visible { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); outline: none; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 0; }
+    .grid a { display: block; height: 100%; box-sizing: border-box; padding: 1rem 1.1rem 1.1rem; background: var(--white); border: 2px solid var(--ink); border-radius: 0.8rem; color: var(--ink); text-decoration: none; box-shadow: 4px 4px 0 var(--ink); }
+    .grid a:hover, .grid a:focus-visible { background: var(--paper-2); outline: none; }
+    .grid b { display: block; font-size: 1.15rem; margin-bottom: 0.25rem; }
+    .grid small { display: block; font: 700 0.72rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .grid span { color: var(--ink-2); font-size: 0.95rem; }
+    .keys { font: 500 0.9rem/1.8 var(--font-mono); }
+    .keys kbd { font: 700 0.8rem var(--font-mono); border: 2px solid var(--ink); border-bottom-width: 4px; border-radius: 0.35rem; padding: 0.05rem 0.4rem; background: var(--white); }
+    @media (max-width: 760px) { .hero-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="page">
+  <div class="page-wrap">
+    <div class="page-top"><span>Programming Interactivity · Lecture 2</span><span>exercises &amp; playgrounds</span></div>
+    <div class="hero-row">
+      <div>
+        <span class="eyebrow-tag">Lecture 2</span>
+        <h1>CSS, <em>or how to dress a page</em></h1>
+        <p class="intro">Connecting styles, the anatomy of a rule, selectors, the cascade, specificity, and the core properties and units — taught through one page, the Harbour Night Market, dressed five different ways.</p>
+        <div class="big-links"><a href="project/starter.zip">⬇ Starter project (zip)</a><a class="alt" href="cheatsheet.html">Cheat sheet</a><a class="alt" href="project/showcase/index.html">Five outfits</a></div>
+      </div>
+      <div class="strip" aria-hidden="true">
+        <img src="images/outfit-swiss.png" alt=""><img src="images/outfit-brutal.png" alt=""><img src="images/outfit-neon.png" alt=""><img src="images/outfit-zine.png" alt="">
+      </div>
+    </div>
+
+    <h2>Exercises <em>in class order</em></h2>
+    <ul class="grid">
+      <li><a href="project/starter.zip"><small>Exercise 1 · 10 min</small><b>Plug in the market</b><span>Link css/style.css to the starter page, prove it with hot pink.</span></a></li>
+      <li><a href="exercises/01-broken-links/index.html"><small>Exercise 1b · early finishers</small><b>Five crimes</b><span>Five pages, five ways to break a stylesheet link.</span></a></li>
+      <li><a href="exercises/02-bug-hunt.html"><small>Exercise 2 · 7 min</small><b>Bug hunt</b><span>Seven silent bugs, live checks.</span></a></li>
+      <li><a href="playgrounds/selector-arena.html"><small>Exercise 3a · 6 min + homework</small><b>Selector Arena</b><span>15 levels at the market stall — 1–6 in class.</span></a></li>
+      <li><a href="exercises/03-market-selectors.html"><small>Exercise 3b · 8 min</small><b>Point at the market</b><span>Nine selector tasks on the real page.</span></a></li>
+      <li><a href="exercises/04-win-the-fight.html"><small>Exercise 4a + 4b · 4 + 4 min + homework</small><b>Win the fight</b><span>Six cascade puzzles with rules of engagement.</span></a></li>
+      <li><a href="project/starter/css/style.css"><small>Exercise 5a · 8 min</small><b>Prep the market</b><span>Three decisions: palette with contrast, type, measure.</span></a></li>
+      <li><a href="exercises/05-dress-the-market.html"><small>Exercise 5b · 15 min + homework</small><b>Dress the market</b><span>Draw a brief, restyle the whole page.</span></a></li>
+    </ul>
+
+    <h2>Playgrounds</h2>
+    <ul class="grid">
+      <li><a href="project/showcase/index.html"><small>Demo</small><b>Five outfits</b><span>One HTML page, swap the stylesheet.</span></a></li>
+      <li><a href="playgrounds/selectors.html"><small>Selectors</small><b>Selector tester</b><span>Type a selector, see what it matches.</span></a></li>
+      <li><a href="playgrounds/nth-child.html"><small>Selectors</small><b>:nth-child()</b><span>Play with An+B formulas.</span></a></li>
+      <li><a href="playgrounds/specificity.html"><small>Cascade</small><b>Specificity calculator</b><span>Score and compare selectors.</span></a></li>
+      <li><a href="playgrounds/color.html"><small>Colour</small><b>Colour lab</b><span>HSL knobs and contrast checks.</span></a></li>
+      <li><a href="playgrounds/box-model.html"><small>Box model</small><b>Box model lab</b><span>Padding, border, margin, box-sizing.</span></a></li>
+      <li><a href="playgrounds/units.html"><small>Units</small><b>Units lab</b><span>px, rem, em, %, vw, ch — relative to what?</span></a></li>
+    </ul>
+  </div>
+</body>
+</html>

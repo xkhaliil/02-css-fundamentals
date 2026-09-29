@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harbour Night Market</title>
+  <link id="outfit" rel="stylesheet" href="themes/neon.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="logo" href="#top">🏮 Night Market</a>
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="#vendors">Vendors</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#tickets">Tickets</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Friday 16 October · 19:00 – 01:00</p>
+      <h1>Harbour Night Market</h1>
+      <p class="lead">Forty stalls, three stages and one very long table on the waterfront at Moll de la Fusta. Street food, vinyl, handmade things and people you haven't met yet.</p>
+      <a class="button" href="#tickets">Get a free ticket</a>
+    </section>
+
+    <section id="vendors">
+      <h2>Vendors</h2>
+      <ul class="vendor-list">
+        <li class="vendor-card featured">
+          <span class="tag">Food</span>
+          <h3>Dumpling Dynasty</h3>
+          <p>Hand-folded xiaolongbao, steamed in front of you. The queue is part of the experience.</p>
+        </li>
+        <li class="vendor-card">
+          <span class="tag">Music</span>
+          <h3>Side B Records</h3>
+          <p>Crates of second-hand vinyl, sorted by mood instead of genre. Ask for "rainy Sunday".</p>
+        </li>
+        <li class="vendor-card">
+          <span class="tag">Crafts</span>
+          <h3>Salt &amp; Ink</h3>
+          <p>Risograph posters of the port, printed in two colours and signed while you wait.</p>
+        </li>
+        <li class="vendor-card sold-out">
+          <span class="tag">Food</span>
+          <h3>Churros Till Late</h3>
+          <p>Crisp, sugared and dunked in thick chocolate. Open until the last dancer leaves.</p>
+          <strong class="badge">Sold out</strong>
+        </li>
+        <li class="vendor-card">
+          <span class="tag">Crafts</span>
+          <h3>The Plant Swap</h3>
+          <p>Bring a cutting, take a cutting. Pots are free, advice is free, gossip is extra.</p>
+        </li>
+        <li class="vendor-card sold-out">
+          <span class="tag">Drinks</span>
+          <h3>Mezcal Moon</h3>
+          <p>Small-batch mezcal and orange slices dusted with chilli salt. Sip, don't shoot.</p>
+          <strong class="badge">Sold out</strong>
+        </li>
+      </ul>
+    </section>
+
+    <section id="schedule">
+      <h2>Schedule</h2>
+      <table class="schedule">
+        <thead>
+          <tr><th>Time</th><th>What</th><th>Where</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>19:00</td><td>Doors open, DJ Marisol warms up</td><td>Main stage</td></tr>
+          <tr><td>19:30</td><td>Dumpling folding class</td><td>Long table</td></tr>
+          <tr><td>20:30</td><td>Los Faroles — live cumbia</td><td>Main stage</td></tr>
+          <tr><td>21:30</td><td>Zine-making workshop</td><td>Long table</td></tr>
+          <tr><td>22:30</td><td>Harbour Brass Band</td><td>The pier</td></tr>
+          <tr><td>00:00</td><td>Silent disco until close</td><td>The pier</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="faq">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Is it really free?</summary>
+        <p>Entry is free. Bring cash or a card for the stalls.</p>
+      </details>
+      <details>
+        <summary>Can I bring my dog?</summary>
+        <p>Yes, on a leash. The dumplings are not for dogs.</p>
+      </details>
+      <details>
+        <summary>What if it rains?</summary>
+        <p>We move under the big tent next to the main stage. The market has never closed early.</p>
+      </details>
+    </section>
+
+    <section id="tickets">
+      <h2>Get a ticket</h2>
+      <form class="ticket-form">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+
+        <label for="arrival">When will you arrive?</label>
+        <select id="arrival" name="arrival">
+          <option>Early — for the food</option>
+          <option>Late — for the music</option>
+          <option>Whenever — for the vibes</option>
+        </select>
+
+        <label class="check"><input type="checkbox" name="news"> Send me next month's line-up</label>
+
+        <button type="submit">Reserve my spot</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Harbour Night Market · Moll de la Fusta, Barcelona</p>
+    <p><a href="#top">Back to top ↑</a></p>
+  </footer>
+  <!-- Not part of the page: the stylesheet switcher used in class. -->
+  <div id="outfit-switcher" role="group" aria-label="Swap the stylesheet">
+    <span>&lt;link href="</span>
+    <button type="button" data-theme="">nothing</button>
+    <button type="button" data-theme="swiss">swiss.css</button>
+    <button type="button" data-theme="brutal">brutal.css</button>
+    <button type="button" data-theme="neon">neon.css</button>
+    <button type="button" data-theme="zine">zine.css</button>
+    <span>"&gt;</span>
+  </div>
+  <style>
+    #outfit-switcher { position: fixed; z-index: 99; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; align-items: center; gap: 4px; padding: 6px 10px; border-radius: 12px; background: #17140f; box-shadow: 0 8px 30px rgb(0 0 0 / .35); font: 600 13px/1 ui-monospace, Menlo, monospace; color: #8d8474; white-space: nowrap; }
+    #outfit-switcher button { all: unset; cursor: pointer; padding: 7px 10px; border-radius: 7px; color: #efe8da; font: inherit; }
+    #outfit-switcher button:hover { background: #2c2924; }
+    #outfit-switcher button:focus-visible { outline: 2px solid #ffd23f; }
+    #outfit-switcher button[aria-pressed="true"] { background: #ffd23f; color: #17140f; }
+    html.bare #outfit-switcher { display: none; }
+  </style>
+  <script>
+    (function () {
+      var link = document.getElementById("outfit");
+      var params = new URLSearchParams(location.search);
+      if (params.has("bare")) document.documentElement.classList.add("bare");
+      var buttons = document.querySelectorAll("#outfit-switcher button");
+      function use(name) {
+        if (name) { link.href = "themes/" + name + ".css"; link.disabled = false; }
+        else { link.disabled = true; link.removeAttribute("href"); }
+        buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.theme === name)); });
+      }
+      buttons.forEach(function (b) { b.addEventListener("click", function () { use(b.dataset.theme); }); });
+      document.addEventListener("keydown", function (e) {
+        var k = "01234".indexOf(e.key);
+        if (k > -1) use(["", "swiss", "brutal", "neon", "zine"][k]);
+        if (["ArrowRight", "ArrowLeft", "PageUp", "PageDown"].indexOf(e.key) > -1 && parent !== window) parent.postMessage({ deckKey: e.key }, "*");
+      });
+      window.addEventListener("message", function (e) { if (e.data && "theme" in e.data) use(e.data.theme); });
+      use(params.has("theme") ? params.get("theme") : "neon");
+    })();
+  </script>
+</body>
+</html>

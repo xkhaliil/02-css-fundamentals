@@ -1,0 +1,130 @@
+/* Swiss — International Typographic Style: grid, giant type, one red */
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;800;900&display=swap");
+
+:root {
+  --red: #e30613;
+  --ink: #111111;
+  --paper: #ffffff;
+  --gutter: 1.25rem;
+  --side: 3vw;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 500 1.05rem/1.45 "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  counter-reset: vendor;
+}
+
+.site-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: end;
+  padding: 1.5rem var(--side);
+  border-bottom: 4px solid var(--ink);
+}
+.logo { font-weight: 900; font-size: 1.25rem; text-decoration: none; color: var(--ink); letter-spacing: -0.02em; }
+.main-nav ul { display: flex; justify-content: flex-end; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+.main-nav a { color: var(--ink); text-decoration: none; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.08em; }
+.main-nav a:hover,
+.main-nav a:focus-visible { color: var(--red); outline: none; text-decoration: underline 3px; text-underline-offset: 0.4em; }
+
+main { padding: 0 var(--side); }
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--gutter);
+  padding: 4rem 0 5rem;
+  border-bottom: 1px solid var(--ink);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 4rem;
+  width: clamp(6rem, 16vw, 14rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--red);
+}
+.eyebrow { grid-column: 1 / -1; margin: 0; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85rem; color: var(--red); }
+.hero h1 {
+  grid-column: 1 / 11;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 11vw, 10rem);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  margin: 1.5rem 0 2rem;
+}
+.lead { grid-column: 1 / 6; font-size: 1.25rem; margin: 0; max-width: 40ch; }
+.hero .button { grid-column: 7 / 11; align-self: end; justify-self: start; }
+
+.button,
+button {
+  display: inline-block;
+  background: var(--ink);
+  color: #fff;
+  font: 800 1rem "Inter Tight", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 1.1rem 1.6rem;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button:hover, button:hover,
+.button:focus-visible, button:focus-visible { background: var(--red); outline: none; }
+
+section { padding: 3rem 0 4rem; border-bottom: 1px solid var(--ink); }
+h2 { font-weight: 900; font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: -0.05em; line-height: 0.9; margin: 0 0 2.5rem; }
+
+.vendor-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 var(--gutter); }
+.vendor-card { counter-increment: vendor; position: relative; border-top: 4px solid var(--ink); padding: 1rem 0 2.5rem; }
+.vendor-card::before {
+  content: counter(vendor, decimal-leading-zero);
+  display: block;
+  font-weight: 900;
+  font-size: 4rem;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+.vendor-card h3 { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.03em; margin: 0.5rem 0; }
+.vendor-card p { margin: 0; max-width: 32ch; }
+.tag { font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.featured { border-top-color: var(--red); }
+.sold-out { color: #9a9a9a; }
+.sold-out::before { color: #cfcfcf; }
+.badge { position: absolute; top: 1.3rem; right: 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; background: var(--ink); color: #fff; padding: 0.3rem 0.5rem; }
+
+.schedule { width: 100%; border-collapse: collapse; }
+.schedule th { text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.5rem 0; border-bottom: 4px solid var(--ink); }
+.schedule td { padding: 1rem 0; border-bottom: 1px solid var(--ink); font-size: 1.25rem; }
+.schedule td:first-child { font-weight: 900; width: 20%; font-variant-numeric: tabular-nums; }
+.schedule tr:hover td { color: var(--red); }
+
+#faq { display: grid; grid-template-columns: 1fr 2fr; column-gap: var(--gutter); }
+#faq h2 { grid-row: span 3; }
+details { border-top: 1px solid var(--ink); padding: 1rem 0; }
+summary { font-weight: 800; font-size: 1.3rem; cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: " +"; color: var(--red); }
+details[open] summary::after { content: " −"; }
+
+.ticket-form { display: grid; grid-template-columns: 1fr 2fr; gap: 1rem var(--gutter); max-width: 52rem; align-items: center; }
+label { font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; }
+input, select { font: inherit; font-size: 1.1rem; padding: 0.7rem 0; border: 0; border-bottom: 3px solid var(--ink); border-radius: 0; background: transparent; }
+input:focus-visible, select:focus-visible { outline: none; border-bottom-color: var(--red); }
+.check { grid-column: 2; display: flex; gap: 0.6rem; align-items: center; text-transform: none; font-weight: 500; font-size: 1rem; letter-spacing: 0; }
+.check input { width: 1.2rem; height: 1.2rem; accent-color: var(--red); }
+.ticket-form button { grid-column: 2; justify-self: start; }
+
+.site-footer { display: flex; justify-content: space-between; padding: 2rem var(--side); background: var(--ink); color: #fff; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.08em; }
+.site-footer p { margin: 0; }
+.site-footer a { color: #fff; }

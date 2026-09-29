@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Harbour Night Market — your stylesheet.
+
+   Step 1  Connect this file to index.html (Exercise 1).
+           It lives in the css/ folder, so the path is css/style.css.
+           Prove it works: uncomment the rule below, save, reload.
+   Step 2  Selectors (Exercise 3) — write them under "Selectors".
+   Step 3  Prep (Exercise 5a) — reset, variables, fonts, rem, ch.
+   Step 4  The makeover (Exercise 5b) — go wild, but keep the checklist.
+   ========================================================================== */
+
+/* body { background: hotpink; } */
+
+
+/* ---------- Reset (mini-exercise "Box your cards") ---------------------- */
+
+/* *, *::before, *::after { box-sizing: border-box; } */
+
+
+/* ---------- Variables & type (Exercise 5a) ------------------------------
+   Uncomment, then replace every … with your own decision.                 */
+
+/*
+button, input, select { font: inherit; }
+
+:root {
+  --bg: …;
+  --ink: …;
+  --accent: …;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: …, sans-serif;
+}
+h1 { font-size: …rem; }
+h2 { font-size: …rem; }
+p  { max-width: …ch; }
+*/
+
+
+/* ---------- Page ---------------------------------------------------------- */
+
+
+/* ---------- Selectors (Exercise 3) --------------------------------------- */
+
+
+/* ---------- Makeover (Exercise 5b) -------------------------------------- */
+
+
+/* ---------- Layout magic — for now ----------------------------------------
+   One line of next week's CSS: turns the vendor list into a card grid that
+   fits as many columns as there is room for. Uncomment it whenever you like.
+   Next week you'll know exactly why it works.                               */
+
+/* .vendor-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1rem; list-style: none; padding: 0; } */

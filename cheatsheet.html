@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏮%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS fundamentals · cheat sheet</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="assets/kit.css">
+  <script src="assets/kit.js" defer></script>
+  <style>
+    .sheet { columns: 3 19rem; column-gap: 1.25rem; }
+    .box { break-inside: avoid; background: var(--white); border: 2px solid var(--ink); border-radius: 0.6rem; padding: 0.8rem 1rem 0.9rem; margin: 0 0 1.25rem; }
+    .box h2 { margin: 0 0 0.5rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .box h2 span { font: 800 0.7rem var(--font-mono); background: var(--ink); color: var(--yellow); padding: 0.2rem 0.45rem; border-radius: 0.25rem; }
+    .box pre.code { font-size: 0.78rem; padding: 0.6rem 0.75rem; margin: 0.4rem 0; }
+    .box table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .box td { padding: 0.25rem 0.3rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .box td:first-child { white-space: nowrap; }
+    .box p, .box li { font-size: 0.88rem; margin: 0.3rem 0; }
+    .box ol, .box ul { padding-left: 1.2rem; margin: 0.3rem 0; }
+    .print { font: 700 0.85rem var(--font-mono); border: 2px solid var(--ink); background: var(--yellow); padding: 0.5rem 0.9rem; border-radius: 0.4rem; cursor: pointer; }
+    @media print {
+      @page { size: A4 landscape; margin: 10mm; }
+      .page { background: #fff; font-size: 10pt; }
+      .page-top, .print, .intro { display: none; }
+      .page-wrap { padding: 0; max-width: none; }
+      .page h1 { font-size: 20pt; margin-bottom: 4mm; }
+      .sheet { columns: 3; column-gap: 5mm; }
+      .box { padding: 2.5mm 3mm; margin-bottom: 3mm; border-width: 1px; }
+      .box pre.code { font-size: 7pt; }
+      .box td, .box p, .box li { font-size: 8pt; }
+    }
+  </style>
+</head>
+<body class="page">
+  <div class="page-wrap">
+    <div class="page-top"><a href="index.html">← CSS Fundamentals · all materials</a><button class="print" type="button" onclick="print()">🖨 Print (A4 landscape)</button></div>
+    <h1>CSS fundamentals <em>on one page</em></h1>
+    <p class="intro">Everything from Lecture 2, condensed. Print it, stick it next to your screen.</p>
+
+    <div class="sheet">
+      <section class="box">
+        <h2><span>1</span> Connect</h2>
+        <pre class="code" data-lang="html">&lt;link rel="stylesheet" href="css/style.css"&gt;</pre>
+        <p>Goes in <code>&lt;head&gt;</code>. Path starts at the HTML file. <code>../</code> = up a folder. Lowercase file names.</p>
+        <p>Also: <code>&lt;style&gt;…&lt;/style&gt;</code> (one page), <code>style=""</code> (one element).</p>
+        <p><b>Nothing happens?</b> Network tab → 404? Styles panel → rule there? Crossed out?</p>
+      </section>
+
+      <section class="box">
+        <h2><span>2</span> Anatomy</h2>
+        <pre class="code" data-lang="css">/* selector   declaration block */
+.vendor-card h3 {
+  color: tomato;     /* declaration */
+  font-size: 1.5rem; /* property: value; */
+}</pre>
+        <p>Invalid declaration → that line skipped. Invalid selector → <b>whole rule</b> skipped. No error messages: DevTools shows ⚠.</p>
+      </section>
+
+      <section class="box">
+        <h2><span>3</span> Selectors</h2>
+        <table>
+          <tr><td><code>h3</code></td><td>type</td></tr>
+          <tr><td><code>.tag</code></td><td>class</td></tr>
+          <tr><td><code>#tickets</code></td><td>id (avoid for styling)</td></tr>
+          <tr><td><code>[type="email"]</code></td><td>attribute</td></tr>
+          <tr><td><code>li.featured</code></td><td>li that is .featured</td></tr>
+          <tr><td><code>li .featured</code></td><td>.featured inside li</td></tr>
+          <tr><td><code>A &gt; B</code></td><td>direct child</td></tr>
+          <tr><td><code>A + B</code> / <code>A ~ B</code></td><td>next / later sibling</td></tr>
+          <tr><td><code>A, B</code></td><td>list</td></tr>
+          <tr><td><code>:hover :focus-visible</code></td><td>state</td></tr>
+          <tr><td><code>:nth-child(2n+1)</code></td><td>position</td></tr>
+          <tr><td><code>:not(.x)</code> <code>:has(.x)</code></td><td>logic</td></tr>
+          <tr><td><code>::before ::after</code></td><td>generated part (needs <code>content</code>)</td></tr>
+        </table>
+      </section>
+
+      <section class="box">
+        <h2><span>4</span> The cascade</h2>
+        <ol>
+          <li><b>Origin &amp; importance</b> — author &gt; user &gt; browser; <code>!important</code> flips it</li>
+          <li><b>Inline</b> <code>style=""</code> — beats selectors</li>
+          <li><b>Layers</b> — later <code>@layer</code> wins; unlayered beats all</li>
+          <li><b>Specificity</b> — see below</li>
+          <li><b>Order</b> — later wins</li>
+        </ol>
+        <p>Each round only runs on a tie. <b>Inherited values lose to any direct rule.</b></p>
+      </section>
+
+      <section class="box">
+        <h2><span>5</span> Specificity (ID, CLASS, TYPE)</h2>
+        <table>
+          <tr><td><b style="color:var(--spec-a)">ID</b></td><td><code>#x</code></td></tr>
+          <tr><td><b style="color:var(--spec-b)">CLASS</b></td><td><code>.x</code> <code>[x]</code> <code>:hover</code></td></tr>
+          <tr><td><b style="color:var(--spec-c)">TYPE</b></td><td><code>p</code> <code>::before</code></td></tr>
+          <tr><td>zero</td><td><code>*</code> combinators <code>:where()</code></td></tr>
+          <tr><td>borrowed</td><td><code>:is() :not() :has()</code> = strongest arg</td></tr>
+        </table>
+        <p><code>#nav .item a:hover</code> = (1, 2, 1). Compare left to right: (1,0,0) beats (0,99,0).</p>
+      </section>
+
+      <section class="box">
+        <h2><span>6</span> Habits</h2>
+        <ul>
+          <li>Style with classes, 1–2 per selector.</li>
+          <li>No ids in CSS. <code>!important</code> only for code you can't edit.</li>
+          <li>File order: reset → base → components → tweaks.</li>
+        </ul>
+        <pre class="code" data-lang="css">*, *::before, *::after { box-sizing: border-box; }
+button, input, select, textarea { font: inherit; }</pre>
+      </section>
+
+      <section class="box">
+        <h2><span>7</span> Colour</h2>
+        <p><code>tomato</code> = <code>#ff6347</code> = <code>rgb(255 99 71)</code> = <code>hsl(9 100% 64%)</code></p>
+        <p>Transparency: <code>rgb(255 99 71 / 50%)</code>. HSL: keep hue, change lightness for shades.</p>
+        <p><b>Contrast:</b> ≥ 4.5 : 1 text, ≥ 3 : 1 large headings.</p>
+      </section>
+
+      <section class="box">
+        <h2><span>8</span> Box model</h2>
+        <p>content → <code>padding</code> → <code>border</code> → <code>margin</code></p>
+        <p>content-box: visible width = width + padding + border. border-box: visible width = width.</p>
+        <p>Shorthand clockwise: <code>margin: T R B L</code>, <code>margin: V H</code>, <code>margin: 0 auto</code> centres. Vertical margins collapse.</p>
+      </section>
+
+      <section class="box">
+        <h2><span>9</span> Units — relative to what?</h2>
+        <table>
+          <tr><td><code>px</code></td><td>fixed · borders</td></tr>
+          <tr><td><code>%</code></td><td>parent size · widths</td></tr>
+          <tr><td><code>em</code></td><td>own font-size · padding (compounds!)</td></tr>
+          <tr><td><code>rem</code></td><td>root font-size · font sizes</td></tr>
+          <tr><td><code>vw vh</code></td><td>viewport · hero sections</td></tr>
+          <tr><td><code>ch</code></td><td>"0" width · <code>max-width: 65ch</code></td></tr>
+        </table>
+        <p>Unitless <code>line-height: 1.5</code>.</p>
+      </section>
+
+      <section class="box">
+        <h2><span>10</span> Custom properties</h2>
+        <pre class="code" data-lang="css">:root { --accent: tomato; }
+.button { background: var(--accent); }
+.dark   { --accent: gold; } /* override locally */</pre>
+      </section>
+
+      <section class="box">
+        <h2><span>11</span> Web fonts &amp; at-rules</h2>
+        <pre class="code" data-lang="html">&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&amp;display=swap"&gt;</pre>
+        <p>Then <code>font-family: "Bricolage Grotesque", system-ui, sans-serif;</code> Max two families.</p>
+        <p><code>@media</code> when · <code>@import</code> another file · <code>@font-face</code> a font · <code>@layer</code> order · <code>@keyframes</code> animation</p>
+      </section>
+
+      <section class="box">
+        <h2><span>12</span> Block vs inline</h2>
+        <p><b>Block</b> (p, h1, li, section, div): full width, stacks. <b>Inline</b> (a, span, strong): flows like text — width, height and vertical margin ignored. <code>display: inline-block</code>: both.</p>
+      </section>
+
+      <section class="box">
+        <h2><span>13</span> One-liners</h2>
+        <pre class="code" data-lang="css">font-size: clamp(2rem, 6vw, 5rem);
+text-wrap: balance;
+accent-color: tomato;
+aspect-ratio: 16 / 9;</pre>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

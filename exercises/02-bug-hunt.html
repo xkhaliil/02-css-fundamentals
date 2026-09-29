@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🏮%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercise 2 · Bug hunt</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../assets/kit.css">
+  <script src="../assets/kit.js" defer></script>
+</head>
+<body class="page">
+  <div class="page-wrap">
+    <div class="page-top"><a href="../index.html">← CSS Fundamentals · all materials</a><span>Exercise 2</span></div>
+    <span class="eyebrow-tag">Bug hunt</span>
+    <h1>Seven bugs. <em>Zero error messages.</em></h1>
+    <p class="intro">This vendor card should look finished. It doesn't, because seven small mistakes are hiding in the CSS. The browser won't complain — it quietly skips what it can't read. Fix the code until every pill below turns green.</p>
+
+    <div class="live panel tall" data-show-html data-solved="🎉 All seven squashed. You now read CSS like a browser.">
+      <script type="text/plain" data-role="html">
+        <article class="card">
+          <span class="tag">Food</span>
+          <h3>Dumpling Dynasty</h3>
+          <p>Hand-folded xiaolongbao, steamed in front of you. The queue is part of the experience.</p>
+        </article>
+      </script>
+      <script type="text/plain" data-role="base">
+        body { font-family: system-ui, sans-serif; background: #f4efe6; padding: 12px; }
+      </script>
+      <textarea>
+/* 7 bugs are hiding in here. */
+
+.card {
+  background: papayawhip
+  border: 3px solid #17140f;
+  border-radius: 16;
+  padding: 24px;
+  max-width: 420px;
+}
+
+.card h3 {
+  colour: tomato;
+  font-size: 28px;
+  letter-spacing: -0.02 em;
+  margin: 12px 0 8px;
+}
+
+.tag {
+  background: #ffd23f;
+  padding: 4px, 10px;
+  text-transform: upper-case;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.card p, .card:hovr {
+  color: #6f665a;
+  line-height: 1.5;
+}
+</textarea>
+      <script type="application/json" data-role="checks">
+        [
+          { "label": "Card background is papayawhip", "sel": ".card", "prop": "background-color", "is": "papayawhip" },
+          { "label": "Card has a 3px border", "sel": ".card", "prop": "border-top-style", "is": "solid" },
+          { "label": "Corners rounded 16px", "sel": ".card", "prop": "border-top-left-radius", "is": "16px" },
+          { "label": "Heading is tomato", "sel": ".card h3", "prop": "color", "is": "tomato" },
+          { "label": "Heading letters are tighter", "sel": ".card h3", "prop": "letter-spacing", "is": "-0.56px", "raw": true },
+          { "label": "Tag padding is 4px 10px", "sel": ".tag", "prop": "padding-left", "is": "10px" },
+          { "label": "Tag is UPPERCASE", "sel": ".tag", "prop": "text-transform", "is": "uppercase" },
+          { "label": "Paragraph is warm grey", "sel": ".card p", "prop": "color", "is": "#6f665a" }
+        ]
+      </script>
+    </div>
+
+    <h2>Stuck?</h2>
+    <div class="tip">
+      <p><strong>Use the real DevTools.</strong> Right-click the preview → Inspect. In the Styles panel, a declaration the browser couldn't understand is <s>struck through</s> with a ⚠ warning icon. A rule that's missing completely has a broken selector.</p>
+      <details><summary style="cursor:pointer;font-weight:700">Still stuck? The seven bug types</summary><p>A missing semicolon · a missing unit · a misspelled property · a space inside a number · a comma where none belongs · an invalid keyword · a typo in a pseudo-class.</p></details>
+    </div>
+  </div>
+</body>
+</html>
